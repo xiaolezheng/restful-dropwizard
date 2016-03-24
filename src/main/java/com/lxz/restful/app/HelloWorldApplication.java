@@ -31,12 +31,9 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     public void run(HelloWorldConfiguration configuration, Environment environment) {
         final HelloWorldResource resource = new HelloWorldResource(configuration.getTemplate(),configuration.getDefaultName());
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
-        //final ThreadDeadlockHealthCheck deadlockHealthCheck = new ThreadDeadlockHealthCheck();
 
         environment.jersey().register(resource);
         environment.healthChecks().register("healthCheck", healthCheck);
-        //environment.healthChecks().register("deadlockCheck", deadlockHealthCheck);
-
         log.info("run.......");
     }
 }
